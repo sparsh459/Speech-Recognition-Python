@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech Recognition in Python</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/index.css') }}" />
+</head>
+<body>
+    <div id="speechContainer">
+        <h1> Upload a New File</h1>
+        <!-- since we're uploading a file data enctype is multipart/form-data -->
+        <!-- post request is when you're takin input from user and sending it to another destination -->
+        <form method="post" enctype="multipart/form-data">
+            <!-- when you specify type file in html or any web browser will render |choose file|no file choosen| input -->
+            <input type="file" name="file"/>
+            <br> 
+            <input type="submit" id="submitButton" value="Transcribe"/>
+        </form>
+<!-- jinja 2 coming in play -->
+{% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1>Transcript</h1>
+            <!-- using jinja variable -->
+            <p id="speechText">{{ transcript }}</p>
+        </div>
+{% endif %}
+    </div>
+</body>
+</html>
